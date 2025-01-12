@@ -1,5 +1,5 @@
 # PPPwn - PlayStation 4 PPPoE RCE
-PPPwn is a kernel remote code execution exploit for PlayStation 4 up to FW 11.00. This is a proof-of-concept exploit for [CVE-2006-4304](https://hackerone.com/reports/2177925) that was reported responsibly to PlayStation.
+PPPwn is a kernel remote code execution exploit for PlayStation 4 up to FW 11.02. This is a proof-of-concept exploit for [CVE-2006-4304](https://hackerone.com/reports/2177925) that was reported responsibly to PlayStation.
 
 Supported versions are:
 - FW 7.00 / 7.01 / 7.02
@@ -12,6 +12,7 @@ Supported versions are:
 - FW 10.00 / 10.01
 - FW 10.50 / 10.70 / 10.71
 - FW 11.00
+- FW 11.02
 - more can be added (PRs are welcome)
 
 The exploit only prints `PPPwned` on your PS4 as a proof-of-concept. In order to launch Mira or similar homebrew enablers, the `stage2.bin` payload needs to be adapted.
@@ -47,8 +48,8 @@ sudo pip install -r requirements.txt
 Compile the payloads:
 
 ```sh
-make -C stage1 FW=1100 clean && make -C stage1 FW=1100
-make -C stage2 FW=1100 clean && make -C stage2 FW=1100
+make -C stage1 FW=1102 clean && make -C stage1 FW=1102
+make -C stage2 FW=1102 clean && make -C stage2 FW=1102
 ```
 
 For other firmwares, e.g. FW 9.00, pass `FW=900`.
@@ -56,7 +57,7 @@ For other firmwares, e.g. FW 9.00, pass `FW=900`.
 DO NOT RUN the exploit just yet (don't press Enter yet) but prepare this command on your prompt (see `ifconfig` for the correct interface):
 
 ```sh
-sudo python3 pppwn.py --interface=enp0s3 --fw=1100
+sudo python3 pppwn.py --interface=enp0s3 --fw=1102
 ```
 
 For other firmwares, e.g. FW 9.00, pass `--fw=900`.
@@ -167,5 +168,5 @@ If the exploit works, you should see an output similar to below, and you should 
 ## Notes for Mac Apple Silicon Users (arm64 / aarch64)
 The code will not compile on Apple Silicon and requires AMD64 architecture.
 There is a workaround using docker which will build the bin files required.
-Clone this repository to your mac system, then from the repo folder run `./build-macarm.sh`. This will build the binaries for PS4 FW 1100 and place the necessary files into the correct folders. To build the binaries for a different version, i.e. 900, run the command as such: `./build-macarm.sh 900`. Once built, copy this folder structure into the Linux VM and execute as instructed above.
+Clone this repository to your mac system, then from the repo folder run `./build-macarm.sh`. This will build the binaries for PS4 FW 1102 and place the necessary files into the correct folders. To build the binaries for a different version, i.e. 900, run the command as such: `./build-macarm.sh 900`. Once built, copy this folder structure into the Linux VM and execute as instructed above.
 This has been tested using VMware Fusion 13.5.1, with the VM Guest as Ubuntu 24.04, and the host machine is MacOS 14.4.1
