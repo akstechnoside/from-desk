@@ -84,7 +84,7 @@ If the exploit works, you should see an output similar to below, and you should 
 
 ```sh
 [+] PPPwn - PlayStation 4 PPPoE RCE by theflow
-[+] args: interface=enp0s3 fw=1100 stage1=stage1/stage1.bin stage2=stage2/stage2.bin
+[+] args: interface=enp0s3 fw=1102 stage1=stage1/stage1.bin stage2=stage2/stage2.bin
 
 [+] STAGE 0: Initialization
 [*] Waiting for PADI...
